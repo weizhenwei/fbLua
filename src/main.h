@@ -28,9 +28,9 @@
  * OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
- * File: main.cpp
+ * File: main.h
  *
- * Brief: main entry point of the project
+ * Brief: include file of main entry point of the project
  *
  * Date: 2014.10.13
  *
@@ -39,16 +39,10 @@
  * *****************************************************************************
  */
 
+#ifdef SRC_MAIN_H_
+#define SRC_MAIN_H_
+
 #include <iostream>
 
-#include "main.h"
-
-using namespace std;
-
-int main(int argc, char *argv[])
-{
-    cout<<"Hello, Lua compiler world!"<<endl;
-
-    return 0;
-}
+#endif  // end of SRC_MAIN_H_
 
