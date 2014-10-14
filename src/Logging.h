@@ -28,28 +28,29 @@
  * OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
- * File: main.h
+ * File: Logging.h
  *
- * Brief: include file of main entry point of the project
+ * Brief: include file of log utility of the project
  *
- * Date: 2014.10.13
+ * Date: 2014.10.14
  *
  * Author: weizhenwei <weizhenwei1988@gmail.com>
  *
  * *****************************************************************************
  */
 
-#ifndef SRC_MAIN_H_
-#define SRC_MAIN_H_
-
-#include <stdio.h>
-
-#include "src/Logging.h"
+#ifndef SRC_LOGGING_H_
+#define SRC_LOGGING_H_
 
 namespace fbLua {
 
+class Logging {
+ public:
+     Logging() {}
+     static void log();
+};
 
 }
 
-#endif  // SRC_MAIN_H_
+#endif  // SRC_LOGGING_H_
 

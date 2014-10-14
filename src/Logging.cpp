@@ -28,9 +28,9 @@
  * OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
- * File: main.h
+ * File: Logging.cpp
  *
- * Brief: include file of main entry point of the project
+ * Brief: log utility of the project
  *
  * Date: 2014.10.13
  *
@@ -39,17 +39,15 @@
  * *****************************************************************************
  */
 
-#ifndef SRC_MAIN_H_
-#define SRC_MAIN_H_
+#include "src/Logging.h"
 
 #include <stdio.h>
 
-#include "src/Logging.h"
-
 namespace fbLua {
 
-
+void Logging::log() {
+    printf("Hello, world!\n");
 }
 
-#endif  // SRC_MAIN_H_
+}
 

@@ -45,7 +45,7 @@ CONFIG_CLEAN_FILES =
 CONFIG_CLEAN_VPATH_FILES =
 am__installdirs = "$(DESTDIR)$(bindir)"
 PROGRAMS = $(bin_PROGRAMS)
-am_fbLua_OBJECTS = main.$(OBJEXT)
+am_fbLua_OBJECTS = main.$(OBJEXT) Logging.$(OBJEXT)
 fbLua_OBJECTS = $(am_fbLua_OBJECTS)
 fbLua_LDADD = $(LDADD)
 DEFAULT_INCLUDES = -I.@am__isrc@ -I$(top_builddir)
@@ -150,7 +150,7 @@ top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
 AUTOMAKE_OPTIONS = foreign
-fbLua_SOURCES = main.cpp main.h
+fbLua_SOURCES = main.cpp main.h Logging.h Logging.cpp
 all: all-am
 
 .SUFFIXES:
@@ -232,6 +232,7 @@ mostlyclean-compile:
 distclean-compile:
 	-rm -f *.tab.c
 
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Logging.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/main.Po@am__quote@
 
 .cpp.o:

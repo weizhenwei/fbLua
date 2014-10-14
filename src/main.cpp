@@ -39,15 +39,14 @@
  * *****************************************************************************
  */
 
-#include <iostream>
+#include <stdio.h>
 
-#include "main.h"
+#include "src/main.h"
 
-using namespace std;
+using namespace fbLua;
 
-int main(int argc, char *argv[])
-{
-    cout<<"Hello, Lua compiler world!"<<endl;
+int main(int argc, char *argv[]) {
+    Logging::log();
 
     return 0;
 }
