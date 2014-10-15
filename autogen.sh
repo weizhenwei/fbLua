@@ -15,7 +15,8 @@ echo "Running autoconf..."
 $AUTOCONF
 
 echo "Running automake..."
-$AUTOMAKE --force-missing --add-missing --copy
+$AUTOMAKE --force-missing --add-missing
+# $AUTOMAKE --force-missing --add-missing --copy
 
 echo "Regenerate configure file done!"
 
