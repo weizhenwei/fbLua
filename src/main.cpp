@@ -39,11 +39,9 @@
  * *****************************************************************************
  */
 
-#include <stdio.h>
-
 #include "src/main.h"
 
-using namespace fbLua;
+using fbLua::Logging;
 
 int main(int argc, char *argv[]) {
     Logging::log();

@@ -49,5 +49,5 @@ void Logging::log() {
     printf("Hello, world!\n");
 }
 
-}
+}  // namespace fbLua
 

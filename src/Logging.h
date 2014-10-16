@@ -50,7 +50,7 @@ class Logging {
      static void log();
 };
 
-}
+}  // namespace fbLua
 
 #endif  // SRC_LOGGING_H_
 
