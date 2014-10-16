@@ -42,26 +42,23 @@
 #ifndef SRC_LOGGING_H_
 #define SRC_LOGGING_H_
 
+#include <syslog.h>
+
 namespace fbLua {
 
+#define FBLUA_IDENT "fbLua"
+#define FBLUA_LOGOPT LOG_PID
+#define FBLUA_FACILITY LOG_USER
 
 class Logging {
  public:
-     enum log_priority {
-         FB_LOG_EMERG,    /* system is unusable */
-         FB_LOG_ALERT,    /* action must be taken immediately */
-         FB_LOG_CRIT,     /* critical conditions */
-         FB_LOG_ERR,      /* error conditions */
-         FB_LOG_WARNING,  /* warning conditions */
-         FB_LOG_NOTICE,   /* normal but significant condition */
-         FB_LOG_INFO,     /* informational */
-         FB_LOG_DEBUG,    /* debug-level messages */
-     };
-
      Logging() {}
-     static void openlog(const char *ident, int logopt, int facility);
-     static void log(enum log_priority priority, const char *format, ...);
-     static void closelog();
+
+     static void fblua_openlog(const char *ident, int logopt, int facility);
+     static void fblua_closelog();
+     static void log(int priority, const char *format, ...);
+
+     static int priority_;
 };
 
 }  // namespace fbLua

@@ -47,11 +47,25 @@
 
 namespace fbLua {
 
-void Logging::openlog(const char *ident, int logopt, int facility) {
+// default log level;
+int Logging::priority_ = LOG_INFO;
+
+void Logging::fblua_openlog(const char *ident, int logopt, int facility) {
     openlog(ident, logopt, facility);
 }
 
-void Logging::log(enum log_priority priority, const char *format, ...) {
+void Logging::fblua_closelog() {
+    closelog();
+}
+
+void Logging::log(int priority, const char *format, ...) {
+    if (priority > Logging::priority_) {
+        return;
+    }
+    if (format == NULL) {
+        return;
+    }
+
     va_list var_list;
 
     va_start(var_list, format);
@@ -82,10 +96,6 @@ void Logging::log(enum log_priority priority, const char *format, ...) {
     va_end(var_list);
     fprintf(stdout, "[%s]: ", log_level);
     vfprintf(stdout, format, var_list);
-}
-
-void Logging::closelog() {
-    closelog();
 }
 
 }  // namespace fbLua

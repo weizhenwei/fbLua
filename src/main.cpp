@@ -41,10 +41,16 @@
 
 #include "src/main.h"
 
+#include <stdio.h>
+
 using fbLua::Logging;
 
 int main(int argc, char *argv[]) {
-    Logging::log(Logging::FB_LOG_INFO, "%s", "Hello, lua compiler!\n");
+    Logging::fblua_openlog(FBLUA_IDENT, FBLUA_LOGOPT, FBLUA_FACILITY);
+
+    Logging::log(LOG_INFO, "%s", "Hello, lua compiler!\n");
+
+    Logging::fblua_closelog();
 
     return 0;
 }
