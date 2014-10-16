@@ -44,7 +44,7 @@
 using fbLua::Logging;
 
 int main(int argc, char *argv[]) {
-    Logging::log();
+    Logging::log(Logging::FB_LOG_INFO, "%s", "Hello, lua compiler!\n");
 
     return 0;
 }

@@ -28,29 +28,65 @@
  * OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
- * File: Logging.h
+ * File: logging.cpp
  *
- * Brief: include file of log utility of the project
+ * Brief: log utility of the project
  *
- * Date: 2014.10.14
+ * Date: 2014.10.13
  *
  * Author: weizhenwei <weizhenwei1988@gmail.com>
  *
  * *****************************************************************************
  */
 
-#ifndef SRC_LOGGING_H_
-#define SRC_LOGGING_H_
+#include "src/logging.h"
+
+#include <stdio.h>
+#include <stdarg.h>
+#include <syslog.h>
 
 namespace fbLua {
 
-class Logging {
- public:
-     Logging() {}
-     static void log();
-};
+void Logging::openlog(const char *ident, int logopt, int facility) {
+    openlog(ident, logopt, facility);
+}
+
+void Logging::log(enum log_priority priority, const char *format, ...) {
+    va_list var_list;
+
+    va_start(var_list, format);
+    va_end(var_list);
+    vsyslog(priority, format, var_list);
+
+    const char *log_level = NULL;
+    if (priority == LOG_INFO) {
+        log_level = "info";
+    } else if (priority == LOG_ERR) {
+        log_level = "error";
+    } else if (priority == LOG_DEBUG) {
+        log_level = "debug";
+    } else if (priority == LOG_EMERG) {
+        log_level = "emergent";
+    } else if (priority == LOG_ALERT) {
+        log_level = "alert";
+    } else if (priority == LOG_CRIT) {
+        log_level = "critical";
+    } else if (priority == LOG_WARNING) {
+        log_level = "warning";
+    } else if (priority == LOG_NOTICE) {
+        log_level = "notice";
+    }
+
+    // TODO(weizhenwei): why va_start and va_end again?
+    va_start(var_list, format);
+    va_end(var_list);
+    fprintf(stdout, "[%s]: ", log_level);
+    vfprintf(stdout, format, var_list);
+}
+
+void Logging::closelog() {
+    closelog();
+}
 
 }  // namespace fbLua
-
-#endif  // SRC_LOGGING_H_
 

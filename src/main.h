@@ -42,7 +42,7 @@
 #ifndef SRC_MAIN_H_
 #define SRC_MAIN_H_
 
-#include "src/Logging.h"
+#include "src/logging.h"
 
 namespace fbLua {
 

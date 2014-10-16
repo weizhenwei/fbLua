@@ -28,26 +28,43 @@
  * OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
- * File: Logging.cpp
+ * File: logging.h
  *
- * Brief: log utility of the project
+ * Brief: include file of log utility of the project
  *
- * Date: 2014.10.13
+ * Date: 2014.10.14
  *
  * Author: weizhenwei <weizhenwei1988@gmail.com>
  *
  * *****************************************************************************
  */
 
-#include "src/Logging.h"
-
-#include <stdio.h>
+#ifndef SRC_LOGGING_H_
+#define SRC_LOGGING_H_
 
 namespace fbLua {
 
-void Logging::log() {
-    printf("Hello, world!\n");
-}
+
+class Logging {
+ public:
+     enum log_priority {
+         FB_LOG_EMERG,    /* system is unusable */
+         FB_LOG_ALERT,    /* action must be taken immediately */
+         FB_LOG_CRIT,     /* critical conditions */
+         FB_LOG_ERR,      /* error conditions */
+         FB_LOG_WARNING,  /* warning conditions */
+         FB_LOG_NOTICE,   /* normal but significant condition */
+         FB_LOG_INFO,     /* informational */
+         FB_LOG_DEBUG,    /* debug-level messages */
+     };
+
+     Logging() {}
+     static void openlog(const char *ident, int logopt, int facility);
+     static void log(enum log_priority priority, const char *format, ...);
+     static void closelog();
+};
 
 }  // namespace fbLua
+
+#endif  // SRC_LOGGING_H_
 
