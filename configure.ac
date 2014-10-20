@@ -10,6 +10,8 @@ AM_INIT_AUTOMAKE(fbLua, 0.0.1)
 
 # Checks for programs.
 AC_PROG_CXX
+AC_PROG_LEX
+AC_PROG_YACC
 
 # Checks for libraries.
 
